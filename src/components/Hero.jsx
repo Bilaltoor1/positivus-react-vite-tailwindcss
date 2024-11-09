@@ -6,9 +6,11 @@ import dribble from '../assets/brands/dribble.png';
 import hubspot from '../assets/brands/hubspot.png';
 import notion from '../assets/brands/notion.png';
 import netflix from '../assets/brands/netflix.png';
+import SlideInFromLeft from '../animation/SlideInFromLeft';
+import SlideInFromRight from '../animation/SlideInFromRight';
+import GrowIn from '../animation/GrowIn';
 
 const Hero = () => {
-
     const brands = [
         { src: amazon, alt: 'Amazon' },
         { src: zoom, alt: 'Zoom' },
@@ -21,18 +23,24 @@ const Hero = () => {
     return (
         <>
             <div className='flex flex-col sm:flex-row items-start gap-[35px] py-[70px]'>
-                <div className='w-full sm:order-2'>
+                <SlideInFromRight className='w-full sm:order-2'>
                     <img src={HeroIllustration} alt="hero image" />
-                </div>
-                <div className='flex flex-col items-start gap-[35px] sm:order-1'>
+                </SlideInFromRight>
+                <SlideInFromLeft className='flex flex-col items-start gap-[35px] sm:order-1'>
                     <h2 className='font-semibold text-[35px] sm:text-[40px] md:text-[50px] lg:text-[60px]'>Navigating the digital landscape for success</h2>
                     <p className='text-[20px]'>Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.</p>
                     <button className='bg-black text-white text-[20px] px-4 py-2 rounded-lg'>Book a consultation</button>
-                </div>
+                </SlideInFromLeft>
             </div>
             <div className='flex gap-4 flex-wrap justify-between'>
                 {brands.map((brand, index) => (
-                    <img key={index} src={brand.src} alt={brand.alt} className="h-12 w-auto filter grayscale brightness-0" />
+                    <GrowIn key={index}>
+                        <img
+                            src={brand.src}
+                            alt={brand.alt}
+                            className="h-12 w-auto filter grayscale brightness-0"
+                        />
+                    </GrowIn>
                 ))}
             </div>
         </>

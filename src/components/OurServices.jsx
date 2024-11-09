@@ -6,6 +6,7 @@ import FifthImage from '../assets/services/5.png';
 import SixthImage from '../assets/services/6.png';
 import Arrow from '../assets/Arrow.svg';
 import { Link } from 'react-router-dom';
+import AnimatedItem from '../animation/AnimatedItem' // Import the new animation component
 
 const services = [
     {
@@ -73,43 +74,44 @@ const services = [
 const OurServices = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-[30px] md:gap-[40px] mt-[100px]'>
-            {services.map(service => (
-                <div
-                    key={service.id}
-                    className='flex gap-[30px] md:gap-[50px] p-[30px]  md:p-[50px] bg-[F3F3F3] border border-black rounded-[30px] md:rounded-[45px] border-b-4 border-b-black'
-                    style={{ backgroundColor: service.bgColor }}
-                >
-                    <div className='flex flex-col justify-between'>
-                        <h3
-                            className=' text-2xl md:text-[30px] font-semibold px-2'
-                            style={{ backgroundColor: service.headingBgColor }}
-                        >
-                            {service.heading}
-                        </h3>
-                        <div className='flex gap-3 items-center mt-8'>
-                            <div
-                                className='rounded-full p-2'
-                                style={{ backgroundColor: service.arrowBgColor }}
+            {services.map((service, index) => (
+                <AnimatedItem key={service.id} delay={index * 0.2}> {/* Use the animation component */}
+                    <div
+                        className='flex gap-[30px] md:gap-[50px] p-[30px]  md:p-[50px] bg-[F3F3F3] border border-black rounded-[30px] md:rounded-[45px] border-b-4 border-b-black'
+                        style={{ backgroundColor: service.bgColor }}
+                    >
+                        <div className='flex flex-col justify-between'>
+                            <h3
+                                className=' text-2xl md:text-[30px] font-semibold px-2'
+                                style={{ backgroundColor: service.headingBgColor }}
                             >
-                                <img src={Arrow} alt='arrow' className='text-white' />
+                                {service.heading}
+                            </h3>
+                            <div className='flex gap-3 items-center mt-8'>
+                                <div
+                                    className='rounded-full p-2'
+                                    style={{ backgroundColor: service.arrowBgColor }}
+                                >
+                                    <img src={Arrow} alt='arrow' className='text-white' />
+                                </div>
+                                <a
+                                    href={service.learnMoreLink}
+                                    className='text-[18px] sm:block hidden'
+                                    style={{ color: service.textColor }}
+                                >
+                                    Learn more
+                                </a>
                             </div>
-                            <a
-                                href={service.learnMoreLink}
-                                className='text-[18px] sm:block hidden'
-                                style={{ color: service.textColor }}
-                            >
-                                Learn more
-                            </a>
                         </div>
+                       <div>
+                       <img
+                            src={service.icon}
+                            alt={service.heading}
+                            className=' min-w-20 min-h-20 w-full h-full sm:w-[200px] sm:h-[200px]  object-contain'
+                        />
+                       </div>
                     </div>
-                   <div>
-                   <img
-                        src={service.icon}
-                        alt={service.heading}
-                        className=' min-w-20 min-h-20 w-full h-full sm:w-[200px] sm:h-[200px]  object-contain'
-                    />
-                   </div>
-                </div>
+                </AnimatedItem>
             ))}
         </div>
     );

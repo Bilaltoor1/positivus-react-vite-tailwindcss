@@ -3,9 +3,13 @@ import Icon from '../assets/Icon.svg';
 import socialFirst from '../assets/social/1.svg';
 import socialSecond from '../assets/social/2.svg';
 import socialThird from '../assets/social/4.svg';
+import AnimatedItem from '../animation/AnimatedItem';
+import SlideInFromLeft from '../animation/SlideInFromLeft';
+import SlideInFromRight from '../animation/SlideInFromRight';
 
 const Footer = () => {
     return (
+        <AnimatedItem intial='50'>
             <div className='flex flex-col rounded-t-[40px] mt-[100px] p-[40px] md:p-[60px] bg-black-light text-white'>
                 <div className='flex flex-col items-center gap-8 md:flex-row  md:justify-between'>
                     <div className='flex gap-2 items-center'>
@@ -26,6 +30,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row  justify-between items-center rounded-[30px] mt-8'>
+                <SlideInFromLeft>
                 <div className='text-white'>
                     <p className='bg-[#B9FF66] inline-block py-1 px-3 text-black rounded-md font-bold'>Contact us:</p>
                     <ul className='mt-4 space-y-2'>
@@ -34,6 +39,8 @@ const Footer = () => {
                         <li>Address: 1234 Main St, Moonstone City, Stardust State 12345</li>
                     </ul>
                 </div>
+                </SlideInFromLeft>
+                <SlideInFromRight>
                 <div className='bg-[#292A32] gap-4 md:gap-0 py-10 px-8 mt-8 rounded-[8px] flex flex-col md:flex-row items-center space-x-4'>
                     <input
                         type="email"
@@ -42,6 +49,7 @@ const Footer = () => {
                     />
                     <button className='bg-[#B9FF66] text-black px-6 py-2 rounded-lg'>Subscribe to news</button>
                 </div>
+                </SlideInFromRight>
             </div>
                 <div className='bg-white w-full h-[1px] my-6 bg-opacity-50'></div>
                 <div className='flex md:flex-row flex-col  gap-4'>
@@ -49,6 +57,7 @@ const Footer = () => {
                     <a href="/" className='underline underline-offset-4'>Privacy Policy</a>
                 </div>
             </div>
+            </AnimatedItem>
     )
 }
 
